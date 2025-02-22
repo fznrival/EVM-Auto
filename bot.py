@@ -4,7 +4,6 @@ import random
 import secrets
 import time
 
-print(f'Helper EVM Testnet By ADFMIDN Team | Support Multiplechain')
 print(f'- Auto Send Native To Random Recipient Address')
 print(f'- Auto Deploy Contract')
 print(f'- Auto Interaction Contract')
@@ -12,7 +11,7 @@ print(f'- Auto Deploy Token')
 print(f'- Auto Send Token To Random Recipient Address')
 print(f'')
 
-web3 = Web3(Web3.HTTPProvider(input('Input RPC Url [https://] : ')))
+web3 = Web3(Web3.HTTPProvider(input('Input RPC Url https:// : ')))
 chainId = web3.eth.chain_id
 
 if  web3.is_connected() == True:
@@ -56,9 +55,8 @@ def sendToken(sender, key, ctraddr, amount, recipient):
             'nonce': nonce
         })
         
-        #sign & send the transaction
         tx_hash = web3.eth.send_raw_transaction(web3.eth.account.sign_transaction(token_tx, key).rawTransaction)
-        #get transaction hash
+        
         print(f'Processing Send {amount} {nametkn} From {sender} To {recipient} ...')
         web3.eth.wait_for_transaction_receipt(tx_hash)
         print(f'Send {amount} {nametkn} From {sender} To {recipient} Success!')
@@ -88,9 +86,8 @@ def deployToken(sender, key):
             'nonce': nonce
         }
         
-        #sign & send the transaction
         tx_hash = web3.eth.send_raw_transaction(web3.eth.account.sign_transaction(deploytoken_tx, key).rawTransaction)
-        #get transaction hash
+        
         print(f'Processing Deploy Token From {sender} ...')
         transaction_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
         print(f'Deploy Token Success From {sender} Success!')
@@ -120,9 +117,8 @@ def writeContract(sender, key, ctraddr):
             'nonce': nonce
         })
         
-        #sign & send the transaction
         tx_hash = web3.eth.send_raw_transaction(web3.eth.account.sign_transaction(msg_tx, key).rawTransaction)
-        #get transaction hash
+        
         print(f'Processing Interaction On Contract {ctraddr} From {sender} ...')
         web3.eth.wait_for_transaction_receipt(tx_hash)
         print(f'Interaction On Contract {ctraddr} From {sender} Success!')
@@ -152,9 +148,8 @@ def deployContract(sender, key):
             'nonce': nonce
         }
         
-        #sign & send the transaction
         tx_hash = web3.eth.send_raw_transaction(web3.eth.account.sign_transaction(deploy_tx, key).rawTransaction)
-        #get transaction hash
+        
         print(f'Processing Deploy Contract From {sender} ...')
         transaction_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
         print(f'Deploy Contract Success From {sender} Success!')
@@ -188,9 +183,8 @@ def sendNative(sender, key, amount, recipient):
             'nonce': nonce
         }
         
-        #sign & send the transaction
         tx_hash = web3.eth.send_raw_transaction(web3.eth.account.sign_transaction(native_tx, key).rawTransaction)
-        #get transaction hash
+        
         print(f'Processing Send {amount} Native From {sender} To {recipient} ...')
         web3.eth.wait_for_transaction_receipt(tx_hash)
         print(f'Send {amount} Native From {sender} To {recipient} Success!')
