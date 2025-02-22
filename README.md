@@ -1,4 +1,3 @@
-# Helper EVM Testnet By ADFMIDN Team | Support Multiplechain
 # Feature :
 - Auto Send Native To Random Recipient Address
 - Auto Deploy Contract
